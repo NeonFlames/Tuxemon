@@ -13,7 +13,7 @@ pypy_vers="pypy3.9"
 pypy_build="pypy3.9-v7.3.13-linux64"
 pypy_archive="$pypy_build.tar.bz2"
 
-if [[ -e build/pypy-linux-64bit ]]; then rm -rf build/pypy-linux-64bit; fi
+rm -rf build/pypy-linux-64bit
 mkdir -p build/pypy-linux-64bit
 cd build
 
@@ -38,11 +38,11 @@ cp $root_folder/README.md .
 cp $root_folder/SPYDER_README.md .
 find . -name "*pyc" -delete
 
-cat << EOF >> Tuxemon.sh
+cat << EOF >> run_tuxemon.sh
 #!/bin/bash
 FWD=\$(dirname \$(readlink -f \$0))
 \$FWD/pypy/bin/pypy \$FWD/run_tuxemon.py
 EOF
 
-chmod a+x Tuxemon.sh
+chmod a+x run_tuxemon.sh
 

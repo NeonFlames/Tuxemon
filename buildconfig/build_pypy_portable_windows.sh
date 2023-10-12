@@ -13,7 +13,7 @@ pypy_vers="pypy3.9"
 pypy_build="pypy3.9-v7.3.13-win64"
 pypy_archive="$pypy_build.zip"
 
-if [[ -e build/pypy-win-64bit ]]; then rm -rf build/pypy-win-64bit; fi
+rm -rf build/pypy-win-64bit
 mkdir -p build/pypy-win-64bit
 cd build/
 
@@ -39,11 +39,11 @@ cp $root_folder/README.md .
 cp $root_folder/SPYDER_README.md .
 find . -name "*pyc" -delete
 
-cat << EOF >> Tuxemon.bat
+cat << EOF >> run_tuxemon.bat
 SETCONSOLE /Hide
 %~dp0\\pypy\\bin\\pypy.exe %~dp0\\run_tuxemon.py
 EOF
-chmod a+x Tuxemon.bat
+chmod a+x run_tuxemon.bat
 
 cat << EOF >> README_WINDOWS.txt
 If the game does not start you may need to install vcredist:
